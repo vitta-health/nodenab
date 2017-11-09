@@ -1,0 +1,26 @@
+{
+  "name": "nodenab",
+  "version": "1.0.0",
+  "description": "Uma biblioteca para remessa e retorno de arquivos 400 e 240 do padrão cnab",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/developers-vitta/nodenab.git"
+  },
+  "keywords": [
+    "cnab",
+    "bradesco",
+    "itau",
+    "240",
+    "400"
+  ],
+  "author": "Gilson F. B. Souza <gilsonfernandesbatista@gmail.com>",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/developers-vitta/nodenab/issues"
+  },
+  "homepage": "https://github.com/developers-vitta/nodenab#readme"
+}
