@@ -2,9 +2,9 @@
   "name": "nodenab",
   "version": "1.0.0",
   "description": "Uma biblioteca para remessa e retorno de arquivos 400 e 240 do padrão cnab",
-  "main": "index.js",
+  "main": "src/Nodenab.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node ./test/index.js"
   },
   "repository": {
     "type": "git",
@@ -13,7 +13,6 @@
   "keywords": [
     "cnab",
     "bradesco",
-    "itau",
     "240",
     "400"
   ],
@@ -22,5 +21,18 @@
   "bugs": {
     "url": "https://github.com/developers-vitta/nodenab/issues"
   },
-  "homepage": "https://github.com/developers-vitta/nodenab#readme"
+  "homepage": "https://github.com/developers-vitta/nodenab#readme",
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-register": "^6.26.0",
+    "babel-core": "6.25.0",
+    "babel-plugin-resolver": "^1.1.0",
+    "babel-preset-stage-2": "6.22.0",
+    "babel-resolver": "^1.1.0"
+  },
+  "dependencies": {
+    "moment": "^2.19.1"
+  }
 }
