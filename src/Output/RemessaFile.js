@@ -7,7 +7,7 @@ module.exports = class RemessaFile extends IntercambioBancarioRemessaFileAbstrac
         return '\r\n';
     }
 
-    generate(filePath) {
+    generate() {
         let headerArquivo = this._encodeHeaderArquivo();
         let lotes = this._encodeLotes();
         let trailerArquivo = this._encodeTrailerArquivo();
@@ -15,7 +15,7 @@ module.exports = class RemessaFile extends IntercambioBancarioRemessaFileAbstrac
         let data = [headerArquivo, lotes, trailerArquivo].join(RemessaFile.CNAB_EOL);
         data += RemessaFile.CNAB_EOL;
 
-        fs.writeFileSync(path.resolve(filePath), data);
+        return data;
     }
 
     _encodeHeaderArquivo() {

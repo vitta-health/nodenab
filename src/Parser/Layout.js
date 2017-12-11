@@ -1,14 +1,28 @@
 import path from 'path';
 
 module.exports = class Layout {
-    constructor(banco, layout = '240', arquivo, layoutPath = '../../layouts') {
+    constructor(banco, layout = '240', arquivo, {layoutPath = '../../layouts', loadFromFile = true}) {
         this._arquivo = arquivo;
-        this._config = require(path.resolve(`${layoutPath}/${banco}/${layout}/${arquivo}.json`));
+        if (loadFromFile) {
+            this._config = require(path.resolve(`${layoutPath}/${banco}/${layout}/${arquivo}.json`));
+        } else {
+            if (typeof arquivo === "object" &&
+                Object.keys(arquivo).includes('servico') &&
+                Object.keys(arquivo).includes('versao') &&
+                Object.keys(arquivo).includes('layout') &&
+                Object.keys(arquivo).includes('remessa') &&
+                Object.keys(arquivo).includes('retorno') &&
+                arquivo['layout'] === layout) {
+                this._config = arquivo;
+            } else {
+                throw new Error('O layout informado é inválido');
+            }
+        }
     }
 
     getRemessaLayout() {
         if (!this._config['remessa']) {
-            throw new Error(`Falta a seção 'remessa' no arquivo de layout ${this._arquivo}`);
+            throw new Error(`Falta a seção 'remessa' no arquivo de layout`);
         }
 
         return this._config['remessa'];
@@ -16,7 +30,7 @@ module.exports = class Layout {
 
     getRetornoLayout() {
         if (!this._config['retorno']) {
-            throw new Error(`Falta a seção 'retorno' no arquivo de layout ${this._arquivo}`);
+            throw new Error(`Falta a seção 'retorno' no arquivo de layout`);
         }
 
         return this._config['retorno'];

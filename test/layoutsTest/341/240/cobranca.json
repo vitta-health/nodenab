@@ -1,7 +1,7 @@
 {
   "servico": "cobranca",
   "versao": "fev2016",
-  "layout": "cnab240",
+  "layout": "240",
   "remessa": {
     "header_arquivo": {
       "codigo_banco": {

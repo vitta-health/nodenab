@@ -1,11 +1,17 @@
 import moment from 'moment';
+import fs from 'fs';
+import path from 'path';
 
-import Layout from '../src/Parser/Layout';
-import Remessa from '../src/Model/Remessa';
-import RemessaFile from '../src/Output/RemessaFile';
+import {
+    Layout,
+    Remessa,
+    RemessaFile,
+    RetornoFile
+} from '../src/Nodenab';
 
 module.exports = () => {
-    const remessaLayout = new Layout(341, '240', 'cobranca', './test/layoutsTest');
+    const arquivo = require(path.resolve(`./test/layoutsTest/341/240/cobranca.json`));
+    const remessaLayout = new Layout(341, '240', arquivo, {loadFromFile: false});
     let remessa = new Remessa(remessaLayout);
 
     remessa.header.set('codigo_banco', 341);
@@ -116,5 +122,17 @@ module.exports = () => {
     remessa.trailer.set('total_registros', 6);
 
     const remessaFile = new RemessaFile(remessa);
-    remessaFile.generate(`./test/out/CB${moment().format('DDMMYY')}.txt`);
+    console.log('Gerando arquivo de remssa... printando abaixo');
+    console.log(remessaFile.generate());
+
+
+    console.log('Arquivo de remessa gerado com sucesso... Testando o retorno');
+
+    const retornoLayout = new Layout(341, '400', 'cobranca', {layoutPath: './test/layoutsTest'});
+    const retornoLines = fs.readFileSync('./test/in/cobranca-itau-cnab400.ret', 'UTF8');
+
+    let retornoFile = new RetornoFile(retornoLayout, retornoLines);
+
+    console.log('Arquivo de retorno lido com sucesso... printando abaixo');
+    console.log(JSON.stringify(retornoFile.generate().toJSON()));
 };
