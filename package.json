@@ -1,6 +1,6 @@
 {
   "name": "nodenab",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Uma biblioteca para remessa e retorno de arquivos 400 e 240 do padrão cnab",
   "main": "src/Nodenab.js",
   "scripts": {
