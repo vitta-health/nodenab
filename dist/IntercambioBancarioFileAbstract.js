@@ -1,9 +1,0 @@
-'use strict';var _createClass = function () {function defineProperties(target, props) {for (var i = 0; i < props.length; i++) {var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);}}return function (Constructor, protoProps, staticProps) {if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;};}();function _classCallCheck(instance, Constructor) {if (!(instance instanceof Constructor)) {throw new TypeError("Cannot call a class as a function");}}module.exports = function () {
-    function IntercambioBancarioFileAbstract() {_classCallCheck(this, IntercambioBancarioFileAbstract);
-        this._model = null;
-    }_createClass(IntercambioBancarioFileAbstract, [{ key: 'generate', value: function generate(
-
-        path) {
-            throw new Error('You have to implement the method generate!');
-        } }]);return IntercambioBancarioFileAbstract;}();
-//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uL3NyYy9JbnRlcmNhbWJpb0JhbmNhcmlvRmlsZUFic3RyYWN0LmpzIl0sIm5hbWVzIjpbIm1vZHVsZSIsImV4cG9ydHMiLCJfbW9kZWwiLCJwYXRoIiwiRXJyb3IiXSwibWFwcGluZ3MiOiJ1c0JBQUFBLE9BQU9DLE9BQVA7QUFDSSwrQ0FBYztBQUNWLGFBQUtDLE1BQUwsR0FBYyxJQUFkO0FBQ0gsS0FITDs7QUFLYUMsWUFMYixFQUttQjtBQUNYLGtCQUFNLElBQUlDLEtBQUosQ0FBVSw0Q0FBVixDQUFOO0FBQ0gsU0FQTCIsImZpbGUiOiJJbnRlcmNhbWJpb0JhbmNhcmlvRmlsZUFic3RyYWN0LmpzIiwic291cmNlc0NvbnRlbnQiOlsibW9kdWxlLmV4cG9ydHMgPSBjbGFzcyBJbnRlcmNhbWJpb0JhbmNhcmlvRmlsZUFic3RyYWN0IHtcbiAgICBjb25zdHJ1Y3RvcigpIHtcbiAgICAgICAgdGhpcy5fbW9kZWwgPSBudWxsO1xuICAgIH1cblxuICAgIGdlbmVyYXRlKHBhdGgpIHtcbiAgICAgICAgdGhyb3cgbmV3IEVycm9yKCdZb3UgaGF2ZSB0byBpbXBsZW1lbnQgdGhlIG1ldGhvZCBnZW5lcmF0ZSEnKTtcbiAgICB9XG59OyJdfQ==

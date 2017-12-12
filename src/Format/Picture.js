@@ -1,4 +1,4 @@
-import moment from 'moment';
+const moment = require('moment');
 
 module.exports = class Picture {
     static get REGEX_VALID_FORMAT() {
