@@ -1,5 +1,5 @@
 {
-  "servico": "multipag_titulos_cobranca",
+  "servico": "multipag_tributos",
   "versao": "02",
   "layout": "240",
   "remessa": {
@@ -300,7 +300,7 @@
           16
         ],
         "picture": "9(3)",
-        "default": 40
+        "default": 12
       },
       "exclusivo_febraban_01": {
         "pos": [
@@ -430,9 +430,16 @@
         ],
         "picture": "X(2)"
       },
-      "exclusivo_febraban_02": {
+      "indicativo_forma_pagamento": {
         "pos": [
           223,
+          224
+        ],
+        "picture": "9(2)"
+      },
+      "exclusivo_febraban_02": {
+        "pos": [
+          225,
           230
         ],
         "picture": "X(6)",
@@ -523,6 +530,125 @@
       }
     },
     "detalhes": {
+      "segmento_o": {
+        "codigo_banco": {
+          "pos": [
+            1,
+            3
+          ],
+          "picture": "9(3)",
+          "default": 237
+        },
+        "lote_servico": {
+          "pos": [
+            4,
+            7
+          ],
+          "picture": "9(4)"
+        },
+        "tipo_registro": {
+          "pos": [
+            8,
+            8
+          ],
+          "picture": "9(1)",
+          "default": 3
+        },
+        "numero_registro": {
+          "pos": [
+            9,
+            13
+          ],
+          "picture": "9(5)"
+        },
+        "codigo_segmento": {
+          "pos": [
+            14,
+            14
+          ],
+          "picture": "X(1)",
+          "default": "O"
+        },
+        "tipo_movimento": {
+          "pos": [
+            15,
+            15
+          ],
+          "picture": "9(1)",
+          "default": ""
+        },
+        "codigo_movimento": {
+          "pos": [
+            16,
+            17
+          ],
+          "picture": "9(2)"
+        },
+        "codigo_barras": {
+          "pos": [
+            18,
+            61
+          ],
+          "picture": "9(44)"
+        },
+        "nome_concessionaria": {
+          "pos": [
+            62,
+            91
+          ],
+          "picture": "X(30)"
+        },
+        "data_vencimento_nominal": {
+          "pos": [
+            92,
+            99
+          ],
+          "picture": "9(8)"
+        },
+        "data_pagamento": {
+          "pos": [
+            100,
+            107
+          ],
+          "picture": "9(8)"
+        },
+        "valor_pagamento": {
+          "pos": [
+            108,
+            122
+          ],
+          "picture": "9(13)V9(2)"
+        },
+        "referencia_sacado": {
+          "pos": [
+            123,
+            142
+          ],
+          "picture": "X(20)"
+        },
+        "nosso_numero": {
+          "pos": [
+            143,
+            162
+          ],
+          "picture": "X(20)"
+        },
+        "exclusivo_febraban_01": {
+          "pos": [
+            163,
+            230
+          ],
+          "picture": "X(68)",
+          "default": ""
+        },
+        "ocorrencias": {
+          "pos": [
+            231,
+            240
+          ],
+          "picture": "X(10)"
+        }
+      },
       "segmento_j": {
         "codigo_banco": {
           "pos": [
@@ -560,7 +686,7 @@
             14
           ],
           "picture": "X(1)",
-          "default": "J"
+          "default": "O"
         },
         "tipo_movimento": {
           "pos": [
@@ -584,7 +710,7 @@
           ],
           "picture": "9(44)"
         },
-        "nome_cedente": {
+        "nome_concessionaria": {
           "pos": [
             62,
             91
@@ -598,75 +724,40 @@
           ],
           "picture": "9(8)"
         },
-        "valor_titulo_nominal": {
-          "pos": [
-            100,
-            114
-          ],
-          "picture": "9(13)V9(2)"
-        },
-        "valor_desconto_abatimento": {
-          "pos": [
-            115,
-            129
-          ],
-          "picture": "9(13)V9(2)"
-        },
-        "valor_mora_multa": {
-          "pos": [
-            130,
-            144
-          ],
-          "picture": "9(13)V9(2)"
-        },
         "data_pagamento": {
           "pos": [
-            145,
-            152
+            100,
+            107
           ],
           "picture": "9(8)"
         },
         "valor_pagamento": {
           "pos": [
-            153,
-            167
+            108,
+            122
           ],
           "picture": "9(13)V9(2)"
         },
-        "quantidade_moeda": {
-          "pos": [
-            168,
-            182
-          ],
-          "picture": "9(10)V9(5)"
-        },
         "referencia_sacado": {
           "pos": [
-            183,
-            202
+            123,
+            142
           ],
           "picture": "X(20)"
         },
         "nosso_numero": {
           "pos": [
-            203,
-            222
+            143,
+            162
           ],
           "picture": "X(20)"
         },
-        "codigo_moeda": {
-          "pos": [
-            223,
-            225
-          ],
-          "picture": "9(2)"
-        },
         "exclusivo_febraban_01": {
           "pos": [
-            225,
+            163,
             230
           ],
-          "picture": "X(6)",
+          "picture": "X(68)",
           "default": ""
         },
         "ocorrencias": {
@@ -977,7 +1068,7 @@
           16
         ],
         "picture": "9(3)",
-        "default": 40
+        "default": 12
       },
       "exclusivo_febraban_01": {
         "pos": [
@@ -1107,9 +1198,16 @@
         ],
         "picture": "X(2)"
       },
-      "exclusivo_febraban_02": {
+      "indicativo_forma_pagamento": {
         "pos": [
           223,
+          224
+        ],
+        "picture": "9(2)"
+      },
+      "exclusivo_febraban_02": {
+        "pos": [
+          225,
           230
         ],
         "picture": "X(6)",
@@ -1200,7 +1298,7 @@
       }
     },
     "detalhes": {
-      "segmento_j": {
+      "segmento_o": {
         "codigo_banco": {
           "pos": [
             1,
@@ -1237,7 +1335,7 @@
             14
           ],
           "picture": "X(1)",
-          "default": "J"
+          "default": "O"
         },
         "tipo_movimento": {
           "pos": [
@@ -1261,7 +1359,7 @@
           ],
           "picture": "9(44)"
         },
-        "nome_cedente": {
+        "nome_concessionaria": {
           "pos": [
             62,
             91
@@ -1275,75 +1373,40 @@
           ],
           "picture": "9(8)"
         },
-        "valor_titulo_nominal": {
-          "pos": [
-            100,
-            114
-          ],
-          "picture": "9(13)V9(2)"
-        },
-        "valor_desconto_abatimento": {
-          "pos": [
-            115,
-            129
-          ],
-          "picture": "9(13)V9(2)"
-        },
-        "valor_mora_multa": {
-          "pos": [
-            130,
-            144
-          ],
-          "picture": "9(13)V9(2)"
-        },
         "data_pagamento": {
           "pos": [
-            145,
-            152
+            100,
+            107
           ],
           "picture": "9(8)"
         },
         "valor_pagamento": {
           "pos": [
-            153,
-            167
+            108,
+            122
           ],
           "picture": "9(13)V9(2)"
         },
-        "quantidade_moeda": {
-          "pos": [
-            168,
-            182
-          ],
-          "picture": "9(10)V9(5)"
-        },
         "referencia_sacado": {
           "pos": [
-            183,
-            202
+            123,
+            142
           ],
           "picture": "X(20)"
         },
         "nosso_numero": {
           "pos": [
-            203,
-            222
+            143,
+            162
           ],
           "picture": "X(20)"
         },
-        "codigo_moeda": {
-          "pos": [
-            223,
-            225
-          ],
-          "picture": "9(2)"
-        },
         "exclusivo_febraban_01": {
           "pos": [
-            225,
+            163,
             230
           ],
-          "picture": "X(6)",
+          "picture": "X(68)",
           "default": ""
         },
         "ocorrencias": {
