@@ -88,8 +88,8 @@ module.exports = function () {
         } }, { key: 'toJSON', value: function toJSON()
 
         {
-            var headerLote = this.header.toJSON();
-            var trailerLote = this.trailer.toJSON();
+            var headerLote = this.header ? this.header.toJSON() : null;
+            var trailerLote = this.trailer ? this.trailer.toJSON() : null;
             var detalhes = this.detalhes;
 
             return {

@@ -88,8 +88,8 @@ module.exports = class Lote {
     }
 
     toJSON() {
-        let headerLote = this.header.toJSON();
-        let trailerLote = this.trailer.toJSON();
+        let headerLote = (this.header) ? this.header.toJSON() : null;
+        let trailerLote = (this.trailer) ? this.trailer.toJSON() : null;
         let detalhes = this.detalhes;
 
         return {
