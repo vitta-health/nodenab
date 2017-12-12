@@ -1,5 +1,5 @@
-import IntercambioBancarioFileAbstract from './IntercambioBancarioFileAbstract';
-import Picture from './Format/Picture';
+const IntercambioBancarioFileAbstract = require('./IntercambioBancarioFileAbstract');
+const Picture = require('./Format/Picture');
 
 module.exports = class IntercambioBancarioRemessaFileAbstract extends IntercambioBancarioFileAbstract {
     constructor(model) {

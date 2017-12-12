@@ -1,3 +1,3 @@
-import BaseSerializable from './BaseSerializable';
+const BaseSerializable = require('./BaseSerializable');
 
 module.exports = class HeaderLote extends BaseSerializable {};

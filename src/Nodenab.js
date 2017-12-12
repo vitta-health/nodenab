@@ -1,7 +1,7 @@
-import Layout from './Parser/Layout';
-import Remessa from './Model/Remessa';
-import RemessaFile from './Output/RemessaFile';
-import RetornoFile from './Input/RetornoFile';
+const Layout = require('./Parser/Layout');
+const Remessa = require('./Model/Remessa');
+const RemessaFile = require('./Output/RemessaFile');
+const RetornoFile = require('./Input/RetornoFile');
 
 module.exports = {
     Layout,

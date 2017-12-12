@@ -1,7 +1,7 @@
-import IntercambioBancarioFileAbstract from './IntercambioBancarioFileAbstract';
-import Picture from './Format/Picture';
-import Retorno from './Model/Retorno';
-import Linha from './Model/Linha';
+const IntercambioBancarioFileAbstract = require('./IntercambioBancarioFileAbstract');
+const Picture = require('./Format/Picture');
+const Retorno = require('./Model/Retorno');
+const Linha = require('./Model/Linha');
 
 module.exports = class IntercambioBancarioRetornoFileAbstract extends IntercambioBancarioFileAbstract {
     static get REGISTRO_HEADER_ARQUIVO() {

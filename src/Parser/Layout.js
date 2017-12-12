@@ -1,4 +1,4 @@
-import path from 'path';
+const path = require('path');
 
 module.exports = class Layout {
     constructor(banco, layout = '240', arquivo, {layoutPath = '../../layouts', loadFromFile = true}) {

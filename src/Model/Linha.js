@@ -1,4 +1,4 @@
-import Picture from '../Format/Picture';
+const Picture = require('../Format/Picture');
 
 module.exports = class Linha {
     constructor(linhaStr, layout, tipo = 'remessa') {

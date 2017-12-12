@@ -1,6 +1,6 @@
-import fs from 'fs';
-import path from 'path';
-import IntercambioBancarioRemessaFileAbstract from '../IntercambioBancarioRemessaFileAbstract'
+const fs = require('fs');
+const path = require('path');
+const IntercambioBancarioRemessaFileAbstract = require('../IntercambioBancarioRemessaFileAbstract')
 
 module.exports = class RemessaFile extends IntercambioBancarioRemessaFileAbstract {
     static get CNAB_EOL() {

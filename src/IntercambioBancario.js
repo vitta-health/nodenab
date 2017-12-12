@@ -1,5 +1,5 @@
-import HeaderArquivo from './Model/HeaderArquivo';
-import TrailerArquivo from './Model/TrailerArquivo';
+const HeaderArquivo = require('./Model/HeaderArquivo');
+const TrailerArquivo = require('./Model/TrailerArquivo');
 
 module.exports = class IntercambioBancario {
     constructor(layout) {

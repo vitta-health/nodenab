@@ -1,6 +1,6 @@
-import Picture from '../Format/Picture';
-import HeaderLote from './HeaderLote';
-import TrailerLote from './TrailerLote';
+const Picture = require('../Format/Picture');
+const HeaderLote = require('./HeaderLote');
+const TrailerLote = require('./TrailerLote');
 
 module.exports = class Lote {
     constructor(layout = {}, sequencial = 1) {

@@ -1,5 +1,5 @@
-import IntercambioBancarioRetornoFileAbstract from '../IntercambioBancarioRetornoFileAbstract';
-import Linha from '../Model/Linha';
+const IntercambioBancarioRetornoFileAbstract = require('../IntercambioBancarioRetornoFileAbstract');
+const Linha = require('../Model/Linha');
 
 module.exports = class RetornoFile extends IntercambioBancarioRetornoFileAbstract{
     generate(path = null) {

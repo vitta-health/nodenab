@@ -1,6 +1,6 @@
-import Picture from '../Format/Picture';
-import IntercambioBancario from '../IntercambioBancario';
-import Lote from './Lote';
+const Picture = require('../Format/Picture');
+const IntercambioBancario = require('../IntercambioBancario');
+const Lote = require('./Lote');
 
 module.exports = class Remessa extends IntercambioBancario {
     constructor(layout) {
