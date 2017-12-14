@@ -55,7 +55,12 @@ module.exports = class Picture {
 
         if (matches = Picture.REGEX_VALID_FORMAT.exec(format)) {
             if (matches[1] === 'X' && !matches[4]) {
-                return `${value}`.substr(0, +(matches[2] || 0)).padEnd(+(matches[2] || 0), ' ');
+                return `${value}`
+                    .normalize('NFD')
+                    .replace(/[\u0300-\u036f]/g, "")
+                    .substr(0, +(matches[2] || 0))
+                    .padEnd(+(matches[2] || 0), ' ')
+                    .toUpperCase();
             } else if (matches[1] === '9') {
                 let numericValue = value;
                 if (Picture._validarData(value)) {
