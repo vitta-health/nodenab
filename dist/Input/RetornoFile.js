@@ -104,11 +104,9 @@ module.exports = function (_IntercambioBancarioR) {_inherits(RetornoFile, _Inter
         {var _this5 = this;
             var defTipoRegistro = { pos: [1, 1], picture: '9(1)' };
             var defCodigoSegmento = { pos: [1, 1], picture: '9(1)' };
-            var defNumeroRegistro = { pos: [395, 400], picture: '9(6)' };
             var lote = { titulos: [] };
 
             var segmentos = {};
-            var codigoLote = null;
             var primeiroCodigoSegmentoLayout = this._layout.getPrimeiroCodigoSegmentoRetorno().toString();
             var ultimoCodigoSegmentoLayout = this._layout.getUltimoCodigoSegmentoRetorno().toString();
 
