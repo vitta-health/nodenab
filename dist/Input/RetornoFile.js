@@ -104,11 +104,9 @@ module.exports = function (_IntercambioBancarioR) {_inherits(RetornoFile, _Inter
         {var _this5 = this;
             var defTipoRegistro = { pos: [1, 1], picture: '9(1)' };
             var defCodigoSegmento = { pos: [1, 1], picture: '9(1)' };
-            var defNumeroRegistro = { pos: [395, 400], picture: '9(6)' };
             var lote = { titulos: [] };
 
             var segmentos = {};
-            var codigoLote = null;
             var primeiroCodigoSegmentoLayout = this._layout.getPrimeiroCodigoSegmentoRetorno().toString();
             var ultimoCodigoSegmentoLayout = this._layout.getUltimoCodigoSegmentoRetorno().toString();
 
@@ -127,7 +125,11 @@ module.exports = function (_IntercambioBancarioR) {_inherits(RetornoFile, _Inter
 
                     var codigoSegmento = linha.obterValorCampo(defCodigoSegmento).toString();
 
-                    segmentos[codigoSegmento] = linha.getDadosSegmento('segmento_' + codigoSegmento.toLowerCase());
+                    if (!segmentos[codigoSegmento]) {
+                        segmentos[codigoSegmento] = [];
+                    }
+
+                    segmentos[codigoSegmento].push(linha.getDadosSegmento('segmento_' + codigoSegmento.toLowerCase()));
 
                     var proximaLinha = new Linha(_this5._linhas[index + 1], _this5._layout, 'retorno');
                     var proximoCodigoSegmento = proximaLinha.obterValorCampo(defCodigoSegmento).toString();
