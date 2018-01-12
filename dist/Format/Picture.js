@@ -77,7 +77,7 @@ module.exports = function () {function Picture() {_classCallCheck(this, Picture)
                     }
 
                     if (isNaN(+numericValue)) {
-                        throw new Error('O valor (' + numericValue + ') informado deve ser um n\xFAmero no formato ' + format);
+                        throw new Error('O valor (' + numericValue + ') do campo ' + options.field + ' informado deve ser um n\xFAmero no formato ' + format);
                     }
 
                     numericValue = Picture.parseNumber(numericValue);
