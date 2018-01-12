@@ -127,7 +127,11 @@ module.exports = function (_IntercambioBancarioR) {_inherits(RetornoFile, _Inter
 
                     var codigoSegmento = linha.obterValorCampo(defCodigoSegmento).toString();
 
-                    segmentos[codigoSegmento] = linha.getDadosSegmento('segmento_' + codigoSegmento.toLowerCase());
+                    if (!segmentos[codigoSegmento]) {
+                        segmentos[codigoSegmento] = [];
+                    }
+
+                    segmentos[codigoSegmento].push(linha.getDadosSegmento('segmento_' + codigoSegmento.toLowerCase()));
 
                     var proximaLinha = new Linha(_this5._linhas[index + 1], _this5._layout, 'retorno');
                     var proximoCodigoSegmento = proximaLinha.obterValorCampo(defCodigoSegmento).toString();

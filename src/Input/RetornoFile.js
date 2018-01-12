@@ -127,7 +127,11 @@ module.exports = class RetornoFile extends IntercambioBancarioRetornoFileAbstrac
 
                const codigoSegmento = linha.obterValorCampo(defCodigoSegmento).toString();
 
-               segmentos[codigoSegmento] = linha.getDadosSegmento(`segmento_${codigoSegmento.toLowerCase()}`);
+               if (!segmentos[codigoSegmento]) {
+                   segmentos[codigoSegmento] = [];
+               }
+
+               segmentos[codigoSegmento].push(linha.getDadosSegmento(`segmento_${codigoSegmento.toLowerCase()}`));
 
                const proximaLinha = new Linha(this._linhas[index + 1], this._layout, 'retorno');
                const proximoCodigoSegmento = proximaLinha.obterValorCampo(defCodigoSegmento).toString();
