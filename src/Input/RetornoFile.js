@@ -104,11 +104,9 @@ module.exports = class RetornoFile extends IntercambioBancarioRetornoFileAbstrac
     _decodeLotesCNAB400() {
         const defTipoRegistro = { pos: [1, 1], picture: '9(1)' };
         const defCodigoSegmento = { pos: [1, 1], picture: '9(1)' };
-        const defNumeroRegistro = { pos: [395, 400], picture: '9(6)' };
         const lote = { titulos: [] };
 
         let segmentos = {};
-        let codigoLote = null;
         let primeiroCodigoSegmentoLayout = this._layout.getPrimeiroCodigoSegmentoRetorno().toString();
         let ultimoCodigoSegmentoLayout = this._layout.getUltimoCodigoSegmentoRetorno().toString();
 
