@@ -104,29 +104,38 @@ module.exports = class RetornoFile extends IntercambioBancarioRetornoFileAbstrac
     _decodeLotesCNAB400() {
         const defTipoRegistro = { pos: [1, 1], picture: '9(1)' };
         const defCodigoSegmento = { pos: [1, 1], picture: '9(1)' };
+        const defNumeroRegistro = { pos: [395, 400], picture: '9(6)' };
+        const lote = { titulos: [] };
 
-        let lote = { titulos: [] };
         let segmentos = {};
+        let codigoLote = null;
         let primeiroCodigoSegmentoLayout = this._layout.getPrimeiroCodigoSegmentoRetorno().toString();
         let ultimoCodigoSegmentoLayout = this._layout.getUltimoCodigoSegmentoRetorno().toString();
 
         this._linhas.forEach((linhaStr, index) => {
-           let linha = new Linha(linhaStr, this._layout, 'retorno');
-           let tipoRegistro = +(linha.obterValorCampo(defTipoRegistro));
+           const linha = new Linha(linhaStr, this._layout, 'retorno');
+           const tipoRegistro = +(linha.obterValorCampo(defTipoRegistro));
 
            if (tipoRegistro === IntercambioBancarioRetornoFileAbstract.REGISTRO_TRAILER_ARQUIVO) {
-               lote['titulos'].push(segmentos);
-               segmentos = [];
-           } else if (tipoRegistro !== IntercambioBancarioRetornoFileAbstract.REGISTRO_HEADER_ARQUIVO) {
-               let codigoSegmento = linha.obterValorCampo(defCodigoSegmento).toString();
+               lote.titulos.push(segmentos);
+               segmentos = {};
+
+               return;
+           }
+
+           if (tipoRegistro !== IntercambioBancarioRetornoFileAbstract.REGISTRO_HEADER_ARQUIVO) {
+
+               const codigoSegmento = linha.obterValorCampo(defCodigoSegmento).toString();
+
                segmentos[codigoSegmento] = linha.getDadosSegmento(`segmento_${codigoSegmento.toLowerCase()}`);
-               let proximaLinha = new Linha(this._linhas[index + 1], this._layout, 'retorno');
-               let proximoCodigoSegmento = proximaLinha.obterValorCampo(defCodigoSegmento).toString();
+
+               const proximaLinha = new Linha(this._linhas[index + 1], this._layout, 'retorno');
+               const proximoCodigoSegmento = proximaLinha.obterValorCampo(defCodigoSegmento).toString();
 
                if (proximoCodigoSegmento.toLowerCase() === primeiroCodigoSegmentoLayout.toLowerCase() ||
                    codigoSegmento.toLowerCase() === ultimoCodigoSegmentoLayout.toLowerCase()) {
                    lote['titulos'].push(segmentos);
-                   segmentos = [];
+                   segmentos = {};
                }
 
 
