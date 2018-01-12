@@ -77,7 +77,7 @@ module.exports = class Picture {
                 }
 
                 if (isNaN(+numericValue)) {
-                    throw new Error(`O valor (${numericValue}) informado deve ser um número no formato ${format}`);
+                    throw new Error(`O valor (${numericValue}) do campo ${options.field} informado deve ser um número no formato ${format}`);
                 }
 
                 numericValue = Picture.parseNumber(numericValue);
