@@ -104,9 +104,8 @@ module.exports = class RetornoFile extends IntercambioBancarioRetornoFileAbstrac
     _decodeLotesCNAB400() {
         const defTipoRegistro = { pos: [1, 1], picture: '9(1)' };
         const defCodigoSegmento = { pos: [1, 1], picture: '9(1)' };
-        const lote = { titulos: [] };
+        const lote = { titulos: {} };
 
-        let segmentos = {};
         let primeiroCodigoSegmentoLayout = this._layout.getPrimeiroCodigoSegmentoRetorno().toString();
         let ultimoCodigoSegmentoLayout = this._layout.getUltimoCodigoSegmentoRetorno().toString();
 
@@ -115,9 +114,6 @@ module.exports = class RetornoFile extends IntercambioBancarioRetornoFileAbstrac
            const tipoRegistro = +(linha.obterValorCampo(defTipoRegistro));
 
            if (tipoRegistro === IntercambioBancarioRetornoFileAbstract.REGISTRO_TRAILER_ARQUIVO) {
-               lote.titulos.push(segmentos);
-               segmentos = {};
-
                return;
            }
 
@@ -125,19 +121,17 @@ module.exports = class RetornoFile extends IntercambioBancarioRetornoFileAbstrac
 
                const codigoSegmento = linha.obterValorCampo(defCodigoSegmento).toString();
 
-               if (!segmentos[codigoSegmento]) {
-                   segmentos[codigoSegmento] = [];
+               if (!lote['titulos'][codigoSegmento]) {
+                   lote['titulos'][codigoSegmento] = [];
                }
 
-               segmentos[codigoSegmento].push(linha.getDadosSegmento(`segmento_${codigoSegmento.toLowerCase()}`));
+               lote['titulos'][codigoSegmento].push(linha.getDadosSegmento(`segmento_${codigoSegmento.toLowerCase()}`));
 
                const proximaLinha = new Linha(this._linhas[index + 1], this._layout, 'retorno');
                const proximoCodigoSegmento = proximaLinha.obterValorCampo(defCodigoSegmento).toString();
 
                if (proximoCodigoSegmento.toLowerCase() === primeiroCodigoSegmentoLayout.toLowerCase() ||
                    codigoSegmento.toLowerCase() === ultimoCodigoSegmentoLayout.toLowerCase()) {
-                   lote['titulos'].push(segmentos);
-                   segmentos = {};
                }
 
 
