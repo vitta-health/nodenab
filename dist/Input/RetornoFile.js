@@ -104,9 +104,8 @@ module.exports = function (_IntercambioBancarioR) {_inherits(RetornoFile, _Inter
         {var _this5 = this;
             var defTipoRegistro = { pos: [1, 1], picture: '9(1)' };
             var defCodigoSegmento = { pos: [1, 1], picture: '9(1)' };
-            var lote = { titulos: [] };
+            var lote = { titulos: {} };
 
-            var segmentos = {};
             var primeiroCodigoSegmentoLayout = this._layout.getPrimeiroCodigoSegmentoRetorno().toString();
             var ultimoCodigoSegmentoLayout = this._layout.getUltimoCodigoSegmentoRetorno().toString();
 
@@ -115,9 +114,6 @@ module.exports = function (_IntercambioBancarioR) {_inherits(RetornoFile, _Inter
                 var tipoRegistro = +linha.obterValorCampo(defTipoRegistro);
 
                 if (tipoRegistro === IntercambioBancarioRetornoFileAbstract.REGISTRO_TRAILER_ARQUIVO) {
-                    lote.titulos.push(segmentos);
-                    segmentos = {};
-
                     return;
                 }
 
@@ -125,19 +121,17 @@ module.exports = function (_IntercambioBancarioR) {_inherits(RetornoFile, _Inter
 
                     var codigoSegmento = linha.obterValorCampo(defCodigoSegmento).toString();
 
-                    if (!segmentos[codigoSegmento]) {
-                        segmentos[codigoSegmento] = [];
+                    if (!lote['titulos'][codigoSegmento]) {
+                        lote['titulos'][codigoSegmento] = [];
                     }
 
-                    segmentos[codigoSegmento].push(linha.getDadosSegmento('segmento_' + codigoSegmento.toLowerCase()));
+                    lote['titulos'][codigoSegmento].push(linha.getDadosSegmento('segmento_' + codigoSegmento.toLowerCase()));
 
                     var proximaLinha = new Linha(_this5._linhas[index + 1], _this5._layout, 'retorno');
                     var proximoCodigoSegmento = proximaLinha.obterValorCampo(defCodigoSegmento).toString();
 
                     if (proximoCodigoSegmento.toLowerCase() === primeiroCodigoSegmentoLayout.toLowerCase() ||
                     codigoSegmento.toLowerCase() === ultimoCodigoSegmentoLayout.toLowerCase()) {
-                        lote['titulos'].push(segmentos);
-                        segmentos = {};
                     }
 
 
