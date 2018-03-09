@@ -1,10 +1,11 @@
 {
   "name": "nodenab",
-  "version": "1.1.10",
+  "version": "1.1.11",
   "description": "Uma biblioteca para remessa e retorno de arquivos 400 e 240 do padrão cnab",
   "main": "dist/Nodenab.js",
   "scripts": {
     "build": "NODE_ENV=production ./node_modules/.bin/babel src --out-dir ./dist",
+    "postbuild": "npm version from-git",
     "prepublish": "npm run build"
   },
   "repository": {
