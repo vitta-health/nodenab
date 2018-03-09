@@ -5,6 +5,7 @@
   "main": "dist/Nodenab.js",
   "scripts": {
     "build": "NODE_ENV=production ./node_modules/.bin/babel src --out-dir ./dist",
+    "postbuild": "npm version from-git --allow-same-version",
     "prepublish": "npm run build"
   },
   "repository": {
