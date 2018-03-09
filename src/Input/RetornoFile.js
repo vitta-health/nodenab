@@ -104,7 +104,7 @@ module.exports = class RetornoFile extends IntercambioBancarioRetornoFileAbstrac
     _decodeLotesCNAB400() {
         const defTipoRegistro = { pos: [1, 1], picture: '9(1)' };
         const defCodigoSegmento = { pos: [1, 1], picture: '9(1)' };
-        const lote = { titulos: {} };
+        const lote = { titulos: [] };
 
         let primeiroCodigoSegmentoLayout = this._layout.getPrimeiroCodigoSegmentoRetorno().toString();
         let ultimoCodigoSegmentoLayout = this._layout.getUltimoCodigoSegmentoRetorno().toString();
@@ -120,12 +120,11 @@ module.exports = class RetornoFile extends IntercambioBancarioRetornoFileAbstrac
            if (tipoRegistro !== IntercambioBancarioRetornoFileAbstract.REGISTRO_HEADER_ARQUIVO) {
 
                const codigoSegmento = linha.obterValorCampo(defCodigoSegmento).toString();
+               const segmento = {};
 
-               if (!lote['titulos'][codigoSegmento]) {
-                   lote['titulos'][codigoSegmento] = [];
-               }
+               segmento[codigoSegmento] = linha.getDadosSegmento(`segmento_${codigoSegmento.toLowerCase()}`);
 
-               lote['titulos'][codigoSegmento].push(linha.getDadosSegmento(`segmento_${codigoSegmento.toLowerCase()}`));
+               lote['titulos'].push(segmento);
 
                const proximaLinha = new Linha(this._linhas[index + 1], this._layout, 'retorno');
                const proximoCodigoSegmento = proximaLinha.obterValorCampo(defCodigoSegmento).toString();
