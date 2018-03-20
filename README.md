@@ -2,6 +2,11 @@
 
 Essa biblioteca tem como objetivo a geração de arquivos CNAB bancários baseado em um layout
 
+## Contribuidores ##
+
+Esse projeto foi baseado na biblioteca (cnab-layouts-parser)[https://github.com/glauberportella/cnab-layouts-parser],
+escrita por Glauber Portella para PHP.
+
 ## Como utilizar essa biblioteca? ##
 
 ## Remessa ##
@@ -29,13 +34,13 @@ import {
 
     let remessa = new Remessa(remessaLayout);
 
-    remessa.header.set('codigo_banco', 341);
+    remessa.header.set('codigo_banco', 237);
     remessa.header.set('tipo_inscricao', 2);
-    remessa.header.set('inscricao_numero', '05346078000186');
-    remessa.header.set('agencia', 2932);
-    remessa.header.set('conta', 24992);
+    remessa.header.set('inscricao_numero', '12562475000132');
+    remessa.header.set('agencia', 5633);
+    remessa.header.set('conta', 45889785);
     remessa.header.set('dac', 9);
-    remessa.header.set('nome_empresa', 'MACWEB SOLUTIONS LTDA');
+    remessa.header.set('nome_empresa', 'FOO BAR LTDA');
     remessa.header.set('data_geracao', moment().format('YYYY-MM-DD'));
     remessa.header.set('hora_geracao', moment().format('HHmmss'));
     remessa.header.set('numero_sequencial_arquivo_retorno', 1);
@@ -45,7 +50,7 @@ import {
     // informando o código sequencial do lote
     let lote = remessa.novoLote(1);
 
-    lote.header.set('codigo_banco', 341);
+    lote.header.set('codigo_banco', 237);
     lote.header.set('lote_servico', lote.sequencial);
     lote.header.set('tipo_registro', 1);
     lote.header.set('tipo_operacao', 'R');
@@ -54,16 +59,16 @@ import {
     lote.header.set('versao_layout_lote', '030');
     lote.header.set('brancos_01', '');
     lote.header.set('tipo_inscricao', 2);
-    lote.header.set('inscricao_empresa', '05346078000186');
+    lote.header.set('inscricao_empresa', '12562475000132');
     lote.header.set('brancos_02', '');
     lote.header.set('zeros_02', 0);
-    lote.header.set('agencia', 2932);
+    lote.header.set('agencia', 5633);
     lote.header.set('brancos_03', '');
     lote.header.set('zeros_03', 0);
-    lote.header.set('conta', '24992');
+    lote.header.set('conta', '45889785');
     lote.header.set('brancos_04', '');
     lote.header.set('dac', 9);
-    lote.header.set('nome_empresa', 'MACWEB SOLUTIONS LTDA');
+    lote.header.set('nome_empresa', 'FOO BAR LTDA');
     lote.header.set('brancos_05', '');
     lote.header.set('numero_sequencial_arquivo_retorno', 1);
     lote.header.set('data_gravacao', moment().format('YYYY-MM-DD'));
@@ -74,8 +79,8 @@ import {
     detalhe.segmento_p.lote_servico = lote.sequencial;
     detalhe.segmento_p.numero_sequencial_registro_lote = 1;
     detalhe.segmento_p.codigo_ocorrencia = '01';
-    detalhe.segmento_p.agencia = 2932;
-    detalhe.segmento_p.conta = 24992;
+    detalhe.segmento_p.agencia = 5633;
+    detalhe.segmento_p.conta = 45889785;
     detalhe.segmento_p.dac = 9;
     detalhe.segmento_p.carteira = 109;
     detalhe.segmento_p.nosso_numero = 12345678;
@@ -105,17 +110,17 @@ import {
     detalhe.segmento_q.numero_sequencial_registro_lote = 2;
     detalhe.segmento_q.codigo_ocorrencia = '01';
     detalhe.segmento_q.tipo_inscricao = 2;
-    detalhe.segmento_q.inscricao_numero = '05346078000186';
-    detalhe.segmento_q.nome_pagador = 'GLAUBER PORTELLA';
-    detalhe.segmento_q.logradouro = 'RUA ALVARENGA';
-    detalhe.segmento_q.bairro = 'GUARANI';
+    detalhe.segmento_q.inscricao_numero = '12562475000132';
+    detalhe.segmento_q.nome_pagador = 'ACME CO. INT';
+    detalhe.segmento_q.logradouro = 'RUA NETFLIX';
+    detalhe.segmento_q.bairro = 'STRANGER THINGS';
     detalhe.segmento_q.cep = 31814;
     detalhe.segmento_q.sufixo_cep = 500;
-    detalhe.segmento_q.cidade = 'BELO HORIZONTE';
-    detalhe.segmento_q.uf = 'MG';
+    detalhe.segmento_q.cidade = 'WILL';
+    detalhe.segmento_q.uf = 'JJ';
     detalhe.segmento_q.tipo_inscricao_sacador = 2;
-    detalhe.segmento_q.inscricao_sacador = '05346078000186';
-    detalhe.segmento_q.nome_sacador = 'MACWEB SOLUTIONS LTDA';
+    detalhe.segmento_q.inscricao_sacador = '12562475000132';
+    detalhe.segmento_q.nome_sacador = 'FOO BAR LTDA';
 
     delete detalhe.segmento_r;
     delete detalhe.segmento_y;
