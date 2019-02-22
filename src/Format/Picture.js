@@ -132,7 +132,7 @@ module.exports = class Picture {
                     let valorRigth = `0.${value.substr(tamanhoLeft, tamanhoRigth)}`;
 
                     if (+(valorRigth) > 0) {
-                        return +(valorLeft) +(valorRigth);
+                        return +(valorLeft) + +(valorRigth);
                     } else {
                         return +(Picture.parseNumber(valorLeft));
                     }

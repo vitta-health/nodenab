@@ -1449,10 +1449,17 @@
           ],
           "picture": "X(20)"
         },
-        "valor": {
+        "data_vencimento": {
           "pos": [
             147,
             152
+          ],
+          "picture": "9(6)"
+        },
+        "valor_documento": {
+          "pos": [
+            153,
+            165
           ],
           "picture": "9(6)"
         },
