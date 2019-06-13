@@ -13,7 +13,7 @@ module.exports = class RetornoFile extends IntercambioBancarioRetornoFileAbstrac
     _decodeHeaderArquivo() {
         const layout = this._layout.getRetornoLayout();
         const headerArquivoDef = layout['header_arquivo'];
-        let linha = new Linha(this._linhas[0], this._layout, 'retorno');
+        let linha = new Linha(this._linhas[0], this._layout, this._tipo);
 
         Object.keys(headerArquivoDef).forEach((campo) => {
             this._model.headerArquivo[campo] = linha.obterValorCampo(headerArquivoDef[campo]);
@@ -23,7 +23,7 @@ module.exports = class RetornoFile extends IntercambioBancarioRetornoFileAbstrac
     _decodeTrailerArquivo() {
         const layout = this._layout.getRetornoLayout();
         const trailerArquivoDef = layout['trailer_arquivo'];
-        let linha = new Linha(this._linhas[this._linhas.length - 1], this._layout, 'retorno');
+        let linha = new Linha(this._linhas[this._linhas.length - 1], this._layout, this._tipo);
 
         Object.keys(trailerArquivoDef).forEach((campo) => {
             this._model.trailerArquivo[campo] = linha.obterValorCampo(trailerArquivoDef[campo]);
@@ -54,7 +54,7 @@ module.exports = class RetornoFile extends IntercambioBancarioRetornoFileAbstrac
 
 
         this._linhas.forEach((linhaStr, index) => {
-           let linha = new Linha(linhaStr, this._layout, 'retorno');
+           let linha = new Linha(linhaStr, this._layout, this._tipo);
            let tipoRegistro = +(linha.obterValorCampo(defTipoRegistro));
 
            if (tipoRegistro === IntercambioBancarioRetornoFileAbstract.REGISTRO_HEADER_ARQUIVO) {
@@ -77,7 +77,7 @@ module.exports = class RetornoFile extends IntercambioBancarioRetornoFileAbstrac
                    let codigoSegmento = linha.obterValorCampo(defCodigoSegmento);
                    let dadosSegmento = linha.getDadosSegmento(`segmento_${codigoSegmento.toLowerCase()}`);
                    segmentos[codigoSegmento] = dadosSegmento;
-                   let proximaLinha = new Linha(this._linhas[index + 1], this._layout, 'retorno');
+                   let proximaLinha = new Linha(this._linhas[index + 1], this._layout, this._tipo);
                    let proximoCodigoSegmento = proximaLinha.obterValorCampo(defCodigoSegmento);
 
                    if (codigoSegmento.toLowerCase() === ultimoCodigoSegmentoLayout.toLowerCase() ||
@@ -110,7 +110,7 @@ module.exports = class RetornoFile extends IntercambioBancarioRetornoFileAbstrac
         let ultimoCodigoSegmentoLayout = this._layout.getUltimoCodigoSegmentoRetorno().toString();
 
         this._linhas.forEach((linhaStr, index) => {
-           const linha = new Linha(linhaStr, this._layout, 'retorno');
+           const linha = new Linha(linhaStr, this._layout, this._tipo);
            const tipoRegistro = +(linha.obterValorCampo(defTipoRegistro));
 
            if (tipoRegistro === IntercambioBancarioRetornoFileAbstract.REGISTRO_TRAILER_ARQUIVO) {
@@ -126,7 +126,7 @@ module.exports = class RetornoFile extends IntercambioBancarioRetornoFileAbstrac
 
                lote['titulos'].push(segmento);
 
-               const proximaLinha = new Linha(this._linhas[index + 1], this._layout, 'retorno');
+               const proximaLinha = new Linha(this._linhas[index + 1], this._layout, this._tipo);
                const proximoCodigoSegmento = proximaLinha.obterValorCampo(defCodigoSegmento).toString();
 
                if (proximoCodigoSegmento.toLowerCase() === primeiroCodigoSegmentoLayout.toLowerCase() ||

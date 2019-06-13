@@ -20,9 +20,10 @@ module.exports = class IntercambioBancarioRetornoFileAbstract extends Intercambi
         return 9;
     }
 
-    constructor(layout, linhas) {
+    constructor(layout, linhas, tipo = 'retorno') {
         super();
         this._layout = layout;
+        this._tipo = tipo;
         this._linhas = [];
         this._totalLotes = 0;
         linhas.split("\n").forEach((linha) => {
