@@ -7,6 +7,8 @@ Essa biblioteca tem como objetivo a geração de arquivos CNAB bancários basead
 Esse projeto foi baseado na biblioteca (cnab-layouts-parser)[https://github.com/glauberportella/cnab-layouts-parser],
 escrita por Glauber Portella para PHP.
 
+ - Harisson Matos <harissonmatos@gmail.com>
+
 ## Como utilizar essa biblioteca? ##
 
 ## Remessa ##
