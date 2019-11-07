@@ -54,8 +54,7 @@ module.exports = class RetornoFile extends IntercambioBancarioRetornoFileAbstrac
     const defCodigoSegmento = { pos: [14, 14], picture: "X(1)" };
     let codigoLote = null;
     let lote = null;
-    let titulos = [];
-    let segmentos = [];
+    let segmentos = {};
     let primeiroCodigoSegmentoLayout = this._layout.getPrimeiroCodigoSegmentoRetorno();
     let ultimoCodigoSegmentoLayout = this._layout.getUltimoCodigoSegmentoRetorno();
 
@@ -86,6 +85,7 @@ module.exports = class RetornoFile extends IntercambioBancarioRetornoFileAbstrac
 
         case IntercambioBancarioRetornoFileAbstract.REGISTRO_DETALHES:
           let codigoSegmento = linha.obterValorCampo(defCodigoSegmento);
+
           let dadosSegmento = linha.getDadosSegmento(
             `segmento_${codigoSegmento.toLowerCase()}`
           );
@@ -113,15 +113,14 @@ module.exports = class RetornoFile extends IntercambioBancarioRetornoFileAbstrac
               IntercambioBancarioRetornoFileAbstract.REGISTRO_DETALHES
           ) {
             lote["detalhes"].push(segmentos);
-            segmentos = [];
+            segmentos = {};
           }
 
           break;
 
         case IntercambioBancarioRetornoFileAbstract.REGISTRO_TRAILER_LOTE:
           this._model.lotes.push(lote);
-          titulos = [];
-          segmentos = [];
+          segmentos = {};
 
           break;
       }
